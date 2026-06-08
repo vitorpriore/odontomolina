@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odonto Molina – Clínica Odontológica em Sorocaba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: oklch(68% 0.095 78);
+  --gold-light: oklch(78% 0.082 82);
+  --gold-dark: oklch(52% 0.085 72);
+  --brown-deep: oklch(22% 0.032 54);
+  --brown-mid: oklch(32% 0.038 56);
+  --off-white: oklch(97% 0.006 82);
+  --sand: oklch(93% 0.016 80);
+  --sand-mid: oklch(88% 0.022 78);
+  --text-dark: oklch(18% 0.028 54);
+  --text-mid: oklch(42% 0.022 60);
+  --font-display: 'Gilda Display', Georgia, serif;
+  --font-body: 'Jost', system-ui, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text-dark);background:var(--off-white);overflow-x:hidden}
+
+/* ── NAVBAR ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:90;padding:1.4rem 2.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s,padding .4s,box-shadow .4s}
+.nav.solid{background:oklch(97% 0.006 82 / .97);backdrop-filter:blur(14px);padding:.85rem 2.5rem;box-shadow:0 1px 0 oklch(68% 0.095 78 / .18)}
+.nav__logo img{height:50px;transition:height .3s}
+.nav.solid .nav__logo img{height:42px}
+.nav__links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav__links a{text-decoration:none;font-size:.8125rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:oklch(95% 0.004 80);transition:color .2s}
+.nav.solid .nav__links a{color:var(--text-dark)}
+.nav__links a:hover{color:var(--gold)}
+.nav.solid .nav__links a:hover{color:var(--gold-dark)}
+.nav__links .nav__cta{background:var(--gold);color:var(--brown-deep)!important;padding:.5rem 1.25rem;font-weight:600}
+.nav__links .nav__cta:hover{background:var(--gold-light);color:var(--brown-deep)!important}
+.nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav__burger span{display:block;width:24px;height:2px;background:white;transition:background .3s}
+.nav.solid .nav__burger span{background:var(--text-dark)}
+.nav__mob{display:none;position:fixed;inset:0;background:var(--brown-deep);z-index:89;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.nav__mob.open{display:flex}
+.nav__mob a{font-family:var(--font-display);font-size:2.25rem;color:var(--off-white);text-decoration:none;transition:color .2s}
+.nav__mob a:hover{color:var(--gold)}
+.nav__mob-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:white;font-size:2rem;cursor:pointer;line-height:1}
+
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero__bg{position:absolute;inset:-60px;background:url('https://www.odontomolina.com.br/wp-content/uploads/2024/09/130-scaled.jpg') center 30% / cover no-repeat;will-change:transform}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(155deg,oklch(16% 0.038 54 / .82) 0%,oklch(26% 0.05 62 / .58) 55%,oklch(38% 0.072 74 / .38) 100%)}
+.hero__content{position:relative;z-index:2;text-align:center;color:white;padding:0 2rem;max-width:920px}
+.hero__eyebrow{display:inline-flex;align-items:center;gap:.85rem;font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:oklch(82% 0.065 80);margin-bottom:1.75rem}
+.hero__eyebrow::before,.hero__eyebrow::after{content:'';display:block;width:36px;height:1px;background:oklch(82% 0.065 80)}
+.hero__h1{font-family:var(--font-display);font-size:clamp(2.75rem,6.5vw,5.75rem);font-weight:400;line-height:1.08;letter-spacing:-.015em;margin-bottom:1.25rem}
+.hero__h1 span{color:oklch(80% 0.085 80)}
+.hero__slogan{font-size:clamp(1rem,2vw,1.3rem);font-weight:300;font-style:italic;color:oklch(90% 0.006 80 / .82);letter-spacing:.025em;margin-bottom:2.75rem}
+.hero__ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--brown-deep);text-decoration:none;padding:.9rem 2rem;font-weight:600;font-size:.8125rem;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s,box-shadow .2s}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 28px oklch(68% 0.095 78 / .45)}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:white;text-decoration:none;padding:.9rem 2rem;font-size:.8125rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;border:1px solid oklch(100% 0 0 / .42);transition:border-color .2s,background .2s,transform .2s}
+.btn-outline:hover{border-color:oklch(82% 0.065 80);background:oklch(100% 0 0 / .07);transform:translateY(-2px)}
+.hero__seal{margin-top:2.75rem;font-size:.72rem;color:oklch(88% 0.006 80 / .65);letter-spacing:.09em;display:inline-flex;align-items:center;gap:.6rem}
+.hero__scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:scrollBob 2.2s ease-in-out infinite}
+.hero__scroll span{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:oklch(95% 0.004 80 / .45)}
+.hero__scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,oklch(100% 0 0 / .45),transparent)}
+@keyframes scrollBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* ── STATS ── */
+.stats{background:var(--brown-deep);padding:3.25rem 2rem}
+.stats__inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center}
+.stats__num{font-family:var(--font-display);font-size:clamp(2.75rem,5vw,4.25rem);color:var(--gold);line-height:1;font-weight:400}
+.stats__lbl{font-size:.75rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:oklch(80% 0.008 80 / .65);margin-top:.5rem}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ── DIFERENCIAIS ── */
+.dif{background:var(--off-white);padding:clamp(4rem,8vw,7rem) 2rem}
+.dif__inner{max-width:1120px;margin:0 auto}
+.dif__hd{margin-bottom:4rem;max-width:540px}
+.dif__grid{display:grid;grid-template-columns:repeat(2,1fr)}
+.dif__card{padding:3rem;border:1px solid oklch(80% 0.012 80 / .5);transition:background .3s}
+.dif__card:nth-child(2),.dif__card:nth-child(4){border-left:none}
+.dif__card:nth-child(3),.dif__card:nth-child(4){border-top:none}
+.dif__card:hover{background:var(--sand)}
+.dif__num{font-family:var(--font-display);font-size:3.75rem;color:var(--gold-dark);opacity:.22;line-height:1;margin-bottom:.75rem;font-weight:400}
+.dif__icon{width:44px;height:44px;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center}
+.dif__icon img{width:100%;height:100%;object-fit:contain;filter:sepia(.8) saturate(1.5) hue-rotate(8deg) brightness(0.92)}
+.dif__title{font-family:var(--font-display);font-size:1.35rem;font-weight:400;margin-bottom:.75rem}
+.dif__text{font-size:.9375rem;line-height:1.68;color:var(--text-mid)}
+
+/* ── SOBRE ── */
+.sobre{background:var(--sand);padding:clamp(4rem,8vw,7rem) 2rem}
+.sobre__inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:center}
+.sobre__pic-wrap{position:relative}
+.sobre__pic-frame{position:absolute;top:-22px;left:-22px;right:22px;bottom:22px;border:1px solid var(--gold);opacity:.38;pointer-events:none;z-index:0}
+.sobre__pic{position:relative;z-index:1;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;display:block}
+.section-lbl{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:.75rem}
+.section-h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.35rem);font-weight:400;line-height:1.13}
+.section-h2 em{font-style:italic;color:var(--gold-dark)}
+.section-p{font-size:1.0625rem;line-height:1.72;color:var(--text-mid);max-width:60ch}
+.sobre__creds{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cred{padding:1rem 1.25rem;background:var(--off-white)}
+.cred__lbl{font-size:.68rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:.25rem}
+.cred__val{font-size:.9375rem;font-weight:500;color:var(--text-dark)}
+
+/* ── TRATAMENTOS ── */
+.trat{background:var(--brown-deep);padding:clamp(4rem,8vw,7rem) 2rem;color:var(--off-white)}
+.trat__inner{max-width:1200px;margin:0 auto}
+.trat .section-h2{color:var(--off-white)}
+.trat .section-lbl{color:var(--gold)}
+.trat .section-h2 em{color:var(--gold)}
+.trat__tabs{display:flex;gap:0;margin-top:3rem;border-bottom:1px solid oklch(100% 0 0 / .12);overflow-x:auto;scrollbar-width:none}
+.trat__tabs::-webkit-scrollbar{display:none}
+.tab-btn{background:none;border:none;color:oklch(70% 0.01 80);font-family:var(--font-body);font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:1rem 1.5rem;cursor:pointer;white-space:nowrap;position:relative;transition:color .2s}
+.tab-btn::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .2s ease}
+.tab-btn.active{color:var(--gold)}
+.tab-btn.active::after{transform:scaleX(1)}
+.tab-panel{display:none;padding-top:3rem;animation:fadeUp .35s ease}
+.tab-panel.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.trat__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem}
+.trat-card{padding:2rem;background:oklch(100% 0 0 / .04);border:1px solid oklch(100% 0 0 / .1);cursor:default;transition:background .25s,border-color .25s,transform .15s ease-out;transform-style:preserve-3d;will-change:transform}
+.trat-card:hover{background:oklch(100% 0 0 / .08);border-color:oklch(68% 0.095 78 / .45)}
+.trat-card__dot{width:6px;height:6px;background:var(--gold);border-radius:50%;margin-bottom:1rem}
+.trat-card__name{font-family:var(--font-display);font-size:1.2rem;font-weight:400;color:var(--off-white);margin-bottom:.5rem}
+.trat-card__desc{font-size:.875rem;line-height:1.62;color:oklch(72% 0.01 80)}
+
+/* ── GALERIA ── */
+.galeria{background:var(--off-white);padding:clamp(4rem,8vw,7rem) 2rem}
+.galeria__inner{max-width:1200px;margin:0 auto}
+.galeria__hd{text-align:center;margin-bottom:3.5rem}
+.galeria__grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:10px}
+.galeria__item{overflow:hidden;cursor:pointer;position:relative}
+.galeria__item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.galeria__item:nth-child(6){grid-column:span 2}
+.galeria__item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.galeria__item:hover img{transform:scale(1.05)}
+.galeria__item__overlay{position:absolute;inset:0;background:oklch(18% 0.04 54 / 0);display:flex;align-items:center;justify-content:center;transition:background .3s}
+.galeria__item:hover .galeria__item__overlay{background:oklch(18% 0.04 54 / .45)}
+.galeria__zoom{opacity:0;transform:scale(.75);transition:opacity .3s,transform .3s;color:white;width:44px;height:44px;border:1.5px solid oklch(100% 0 0 / .8);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.galeria__item:hover .galeria__zoom{opacity:1;transform:scale(1)}
+
+/* ── LIGHTBOX ── */
+.lb{position:fixed;inset:0;background:oklch(10% 0.018 50 / .96);z-index:200;display:none;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb__img{max-width:90vw;max-height:86vh;object-fit:contain;display:block}
+.lb__close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:white;font-size:2.5rem;cursor:pointer;line-height:1;transition:color .2s}
+.lb__close:hover{color:var(--gold)}
+.lb__nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid oklch(100% 0 0 / .25);color:white;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s;font-size:1.25rem}
+.lb__nav:hover{border-color:var(--gold);background:oklch(100% 0 0 / .08)}
+.lb__prev{left:1.5rem}
+.lb__next{right:1.5rem}
+.lb__caption{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:.8125rem;color:oklch(75% 0.005 80);letter-spacing:.06em;white-space:nowrap}
+
+/* ── DEPOIMENTOS ── */
+.depo{background:var(--sand);padding:clamp(4rem,8vw,7rem) 2rem}
+.depo__inner{max-width:880px;margin:0 auto;text-align:center}
+.depo__hd{margin-bottom:3.5rem}
+.depo__carousel{position:relative;min-height:260px}
+.depo__item{display:none;animation:fadeUp .5s ease}
+.depo__item.active{display:block}
+.depo__stars{font-size:1.1rem;color:var(--gold);letter-spacing:.1em;margin-bottom:1.25rem}
+.depo__quote{font-family:var(--font-display);font-size:clamp(1.2rem,2.4vw,1.65rem);font-weight:400;line-height:1.55;color:var(--text-dark);margin-bottom:1.75rem;font-style:italic;position:relative;padding:0 1rem}
+.depo__quote::before{content:'\201C';position:absolute;top:-2rem;left:-0.5rem;font-size:5rem;color:var(--gold);opacity:.2;font-family:var(--font-display);line-height:1}
+.depo__author{font-size:.875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dark)}
+.depo__role{font-size:.8rem;color:var(--text-mid);margin-top:.25rem}
+.depo__controls{display:flex;align-items:center;justify-content:center;gap:1.25rem;margin-top:2.5rem}
+.depo__btn{background:none;border:1px solid oklch(50% 0.02 60 / .35);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:var(--text-dark);transition:border-color .2s,background .2s}
+.depo__btn:hover{border-color:var(--gold-dark);background:var(--sand-mid)}
+.depo__dots{display:flex;gap:.5rem}
+.depo__dot{width:7px;height:7px;border-radius:50%;background:oklch(50% 0.02 60 / .3);cursor:pointer;transition:background .2s,transform .2s}
+.depo__dot.active{background:var(--gold-dark);transform:scale(1.35)}
+.google-badge{margin-top:2.75rem;display:inline-flex;align-items:center;gap:.75rem;font-size:.875rem;color:var(--text-mid)}
+.google-badge__score{font-weight:700;font-size:1.1rem;color:var(--text-dark)}
+.google-badge__stars{color:#FBBC04;font-size:1rem}
+
+/* ── FAQ ── */
+.faq{background:var(--off-white);padding:clamp(4rem,8vw,7rem) 2rem}
+.faq__inner{max-width:860px;margin:0 auto}
+.faq__hd{text-align:center;margin-bottom:3.5rem}
+.faq-item{border-bottom:1px solid oklch(78% 0.014 80 / .5)}
+.faq-item:first-child{border-top:1px solid oklch(78% 0.014 80 / .5)}
+.faq-item__q{width:100%;background:none;border:none;text-align:left;font-family:var(--font-body);font-size:.9375rem;font-weight:500;color:var(--text-dark);padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;transition:color .2s}
+.faq-item__q:hover{color:var(--gold-dark)}
+.faq-item__ico{flex-shrink:0;width:22px;height:22px;border:1.5px solid var(--gold-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--gold-dark);transition:transform .3s,background .2s,color .2s}
+.faq-item.open .faq-item__ico{transform:rotate(45deg);background:var(--gold-dark);color:white}
+.faq-item__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.faq-item.open .faq-item__body{grid-template-rows:1fr}
+.faq-item__body-inner{overflow:hidden}
+.faq-item__a{font-size:.9375rem;line-height:1.72;color:var(--text-mid);padding-bottom:1.5rem}
+
+/* ── CONTATO ── */
+.contato{background:var(--brown-deep);padding:clamp(4rem,8vw,7rem) 2rem;color:var(--off-white)}
+.contato__inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.contato .section-h2{color:var(--off-white)}
+.contato .section-lbl{color:var(--gold)}
+.contato__info{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.5rem}
+.contato__row{display:flex;align-items:flex-start;gap:1rem}
+.contato__ico{width:36px;height:36px;background:oklch(100% 0 0 / .07);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:.9rem}
+.contato__txt{font-size:.9375rem;line-height:1.65;color:oklch(80% 0.008 80)}
+.contato__txt strong{color:var(--off-white);display:block}
+.contato__txt a{color:oklch(80% 0.008 80);text-decoration:none;transition:color .2s}
+.contato__txt a:hover{color:var(--gold)}
+.contato__cta-wrap{margin-top:2.5rem;display:flex;flex-direction:column;gap:.75rem;align-items:flex-start}
+.contato__map{min-height:420px}
+.contato__map iframe{width:100%;height:100%;min-height:420px;border:none;filter:grayscale(25%) sepia(12%);display:block}
+
+/* ── FOOTER ── */
+footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
+.footer__inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.footer__logo img{height:38px}
+.footer__social{display:flex;gap:.625rem}
+.footer__soc{width:38px;height:38px;border:1px solid oklch(100% 0 0 / .15);display:flex;align-items:center;justify-content:center;color:oklch(72% 0.01 80);text-decoration:none;transition:border-color .2s,color .2s;font-size:.875rem}
+.footer__soc:hover{border-color:var(--gold);color:var(--gold)}
+.footer__copy{font-size:.72rem;color:oklch(52% 0.014 68);letter-spacing:.04em}
+
+/* ── WA FLOAT ── */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:150;display:flex;flex-direction:column;align-items:flex-end;gap:.625rem}
+.wa-float__tip{background:var(--brown-deep);color:var(--off-white);font-size:.8rem;font-weight:500;padding:.45rem .875rem;white-space:nowrap;opacity:0;transform:translateX(8px);transition:opacity .22s,transform .22s;pointer-events:none}
+.wa-float:hover .wa-float__tip{opacity:1;transform:none}
+.wa-float__btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;box-shadow:0 4px 20px oklch(48% 0.15 148 / .45);animation:waPulse 2.8s ease-in-out infinite;transition:transform .2s}
+.wa-float__btn:hover{animation:none;transform:scale(1.09)}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px oklch(48% 0.15 148 / .45)}55%{box-shadow:0 4px 30px oklch(48% 0.15 148 / .72),0 0 0 9px oklch(48% 0.15 148 / .12)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .nav__links{display:none}
+  .nav__burger{display:flex}
+  .dif__grid{grid-template-columns:1fr}
+  .dif__card:nth-child(2),.dif__card:nth-child(4){border-left:1px solid oklch(80% 0.012 80 / .5)}
+  .dif__card:nth-child(3){border-top:1px solid oklch(80% 0.012 80 / .5)}
+  .sobre__inner{grid-template-columns:1fr;gap:3rem}
+  .contato__inner{grid-template-columns:1fr;gap:3rem}
+  .galeria__grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+  .galeria__item:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .galeria__item:nth-child(6){grid-column:span 2}
+  .footer__inner{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:600px){
+  .hero__ctas{flex-direction:column;align-items:center}
+  .sobre__creds{grid-template-columns:1fr}
+  .galeria__grid{grid-template-columns:1fr;grid-auto-rows:220px}
+  .galeria__item:nth-child(1),.galeria__item:nth-child(6){grid-column:span 1;grid-row:span 1}
+  .dif__card{padding:2rem 1.5rem}
+  .trat__grid{grid-template-columns:1fr}
+}
+
+/* ── FORMULÁRIO MODAL ── */
+.form-modal{position:fixed;inset:0;background:oklch(0% 0 0 / .6);display:none;align-items:center;justify-content:center;z-index:200;padding:2rem}
+.form-modal.open{display:flex}
+.form-modal__content{background:var(--off-white);border-radius:12px;padding:2.5rem;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px oklch(0% 0 0 / .3)}
+.form-modal__close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.8rem;cursor:pointer;color:var(--text-dark);line-height:1}
+.form-modal__title{font-family:var(--font-display);font-size:1.75rem;color:var(--text-dark);margin-bottom:1.5rem;font-weight:400}
+.form-group{margin-bottom:1.75rem}
+.form-group label{display:block;font-weight:500;font-size:.9rem;color:var(--text-dark);margin-bottom:.5rem;letter-spacing:.02em}
+.form-group input[type="text"],.form-group select,.form-group textarea{width:100%;padding:.75rem 1rem;font-family:var(--font-body);font-size:.95rem;border:1px solid oklch(80% 0.012 80 / .5);border-radius:6px;color:var(--text-dark);transition:border-color .2s,box-shadow .2s}
+.form-group input[type="text"]:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold) / 0.1}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:white;padding-right:2.5rem}
+.form-options{display:flex;flex-direction:column;gap:.75rem}
+.form-option{display:flex;align-items:center}
+.form-option input[type="radio"],.form-option input[type="checkbox"]{cursor:pointer;margin-right:.75rem;width:18px;height:18px;accent-color:var(--gold)}
+.form-option label{margin:0;cursor:pointer;font-weight:400}
+.form-modal__submit{width:100%;padding:1rem;background:var(--gold);color:var(--brown-deep);font-weight:600;font-size:.9rem;letter-spacing:.07em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:background .2s,transform .2s;margin-top:1rem}
+.form-modal__submit:hover{background:var(--gold-light);transform:translateY(-2px)}
+.form-modal__submit:active{transform:translateY(0)}
+
+</style>
+</head>
+<body>
+
+<!-- FORMULÁRIO MODAL -->
+<div class="form-modal" id="formModal">
+  <div class="form-modal__content">
+    <button class="form-modal__close" id="formClose">✕</button>
+    <h2 class="form-modal__title">Ficha de Anamnese</h2>
+    
+    <div class="form-group">
+      <label for="formNome">Qual é o seu nome completo?</label>
+      <input type="text" id="formNome" placeholder="Digite seu nome">
+    </div>
+
+    <div class="form-group">
+      <label for="formEspecialidade">Qual especialidade você está interessado?</label>
+      <select id="formEspecialidade">
+        <option value="">Selecione uma opção</option>
+        <option value="Implantodontia">Implantodontia</option>
+        <option value="Exodontias">Exodontias</option>
+        <option value="Periodontia">Periodontia</option>
+        <option value="Estética do Sorriso">Estética do Sorriso</option>
+        <option value="Harmonização Orofacial">Harmonização Orofacial</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="formQueixa">Qual é sua principal queixa ou objetivo?</label>
+      <select id="formQueixa">
+        <option value="">Selecione uma opção</option>
+        <option value="Dentes faltando">Dentes faltando</option>
+        <option value="Dentes com problemas gengivais">Dentes com problemas gengivais</option>
+        <option value="Estética do sorriso">Estética do sorriso</option>
+        <option value="Dor ou inflamação">Dor ou inflamação</option>
+        <option value="Alinhamento/forma dos dentes">Alinhamento/forma dos dentes</option>
+        <option value="Outro">Outro</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="formTempo">Há quanto tempo você tem esse problema?</label>
+      <select id="formTempo">
+        <option value="">Selecione uma opção</option>
+        <option value="Menos de 1 mês">Menos de 1 mês</option>
+        <option value="1 a 6 meses">1 a 6 meses</option>
+        <option value="6 meses a 1 ano">6 meses a 1 ano</option>
+        <option value="Mais de 1 ano">Mais de 1 ano</option>
+        <option value="Não sei / Nunca procurei saber">Não sei / Nunca procurei saber</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="formTratamento">Você já fez algum tratamento odontológico antes?</label>
+      <select id="formTratamento">
+        <option value="">Selecione uma opção</option>
+        <option value="Nunca fui ao dentista">Nunca fui ao dentista</option>
+        <option value="Limpeza/higiene apenas">Limpeza/higiene apenas</option>
+        <option value="Restauração/obturação">Restauração/obturação</option>
+        <option value="Cirurgias">Cirurgias</option>
+        <option value="Implante">Implante</option>
+        <option value="Outro">Outro</option>
+      </select>
+    </div>
+
+    <button class="form-modal__submit" id="formSubmit">Enviar para WhatsApp</button>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav__logo"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/Logo-Odonto-Molina.png" alt="Odonto Molina"></a>
+  <ul class="nav__links">
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#sobre">Dr. Rafael</a></li>
+    <li><a href="#tratamentos">Tratamentos</a></li>
+    <li><a href="#galeria">Clínica</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://wa.me/5515998841111?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Odonto%20Molina." class="nav__cta" target="_blank">Agendar</a></li>
+  </ul>
+  <button class="nav__burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav__mob" id="mobMenu">
+  <button class="nav__mob-close" id="mobClose">&#x2715;</button>
+  <a href="#diferenciais" onclick="closeMob()">Diferenciais</a>
+  <a href="#sobre" onclick="closeMob()">Dr. Rafael</a>
+  <a href="#tratamentos" onclick="closeMob()">Tratamentos</a>
+  <a href="#galeria" onclick="closeMob()">Clínica</a>
+  <a href="#faq" onclick="closeMob()">FAQ</a>
+  <a href="https://wa.me/5515998841111?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Odonto%20Molina." target="_blank" style="color:var(--gold)">Agendar Avaliação</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg" id="heroBg"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <div class="hero__eyebrow">Clínica Odontológica em Sorocaba</div>
+    <h1 class="hero__h1">Sorrisos que<br><span>transformam vidas</span></h1>
+    <p class="hero__slogan">"Ter um lindo sorriso aumenta a sua autoestima"</p>
+    <div class="hero__ctas">
+      <a href="https://wa.me/5515998841111?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Odonto%20Molina." class="btn-gold" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Fale pelo WhatsApp
+      </a>
+      <a href="https://wa.me/5515998841111?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Odonto%20Molina." class="btn-outline" target="_blank">Agendar Avaliação</a>
+    </div>
+    <div class="hero__seal">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      CROSP 095345 &nbsp;&middot;&nbsp; Dr. Rafael Molina Vargas &nbsp;&middot;&nbsp; Especialista e Mestre em Implantodontia
+    </div>
+  </div>
+  <div class="hero__scroll"><div class="hero__scroll-line"></div><span>rolar</span></div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats__inner">
+    <div class="reveal"><div class="stats__num"><span class="counter" data-target="17">0</span>+</div><div class="stats__lbl">Anos de experiência</div></div>
+    <div class="reveal d1"><div class="stats__num"><span class="counter" data-target="5000">0</span>+</div><div class="stats__lbl">Pacientes atendidos</div></div>
+    <div class="reveal d2"><div class="stats__num"><span class="counter" data-target="2">0</span></div><div class="stats__lbl">Clínicas no Brasil</div></div>
+    <div class="reveal d3"><div class="stats__num"><span class="counter" data-target="2">0</span></div><div class="stats__lbl">Especialidades</div></div>
+    <div class="reveal d4"><div class="stats__num"><span class="counter" data-target="1">0</span></div><div class="stats__lbl">Mestrado</div></div>
+  </div>
+</div>
+
+<!-- DIFERENCIAIS -->
+<section class="dif" id="diferenciais">
+  <div class="dif__inner">
+    <div class="dif__hd">
+      <p class="section-lbl reveal">Por que nos escolher</p>
+      <h2 class="section-h2 reveal d1">Cuidado que vai<br><em>além do dente</em></h2>
+    </div>
+    <div class="dif__grid">
+      <div class="dif__card reveal">
+        <div class="dif__num">01</div>
+        <div class="dif__icon"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/dente-1.png" alt="Ícone dente"></div>
+        <h3 class="dif__title">Avaliação detalhada</h3>
+        <p class="dif__text">Cada sorriso é único. Realizamos uma análise minuciosa da sua saúde bucal antes de qualquer procedimento, garantindo diagnóstico preciso e plano de tratamento totalmente personalizado.</p>
+      </div>
+      <div class="dif__card reveal d1">
+        <div class="dif__num">02</div>
+        <div class="dif__icon"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/dente-1.png" alt="Ícone dente"></div>
+        <h3 class="dif__title">Total segurança clínica</h3>
+        <p class="dif__text">Rigorosos protocolos de biossegurança em cada atendimento. Materiais esterilizados, equipamentos de última geração e ambiente completamente higienizado para a sua proteção.</p>
+      </div>
+      <div class="dif__card reveal d2">
+        <div class="dif__num">03</div>
+        <div class="dif__icon"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/dente-1.png" alt="Ícone dente"></div>
+        <h3 class="dif__title">Informações claras</h3>
+        <p class="dif__text">Você entende cada etapa do tratamento. Apresentamos o plano completo com todas as opções disponíveis, custos e prazos, para que você decida com total confiança e tranquilidade.</p>
+      </div>
+      <div class="dif__card reveal d3">
+        <div class="dif__num">04</div>
+        <div class="dif__icon"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/dente-1.png" alt="Ícone dente"></div>
+        <h3 class="dif__title">Atendimento humanizado</h3>
+        <p class="dif__text">Tratamentos sem dor e com acolhimento real. Nossa equipe cuida não apenas do sorriso, mas de toda a sua experiência: do agendamento ao pós-consulta, você sempre é prioridade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="sobre__inner">
+    <div class="sobre__pic-wrap reveal">
+      <div class="sobre__pic-frame"></div>
+      <img class="sobre__pic" src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/Doutor-Molina.webp" alt="Dr. Rafael Molina Vargas, especialista em Implantodontia">
+    </div>
+    <div>
+      <p class="section-lbl reveal">Conheça o especialista</p>
+      <h2 class="section-h2 reveal d1">Dr. Rafael<br>Molina Vargas</h2>
+      <p class="section-p reveal d2" style="margin-top:1.5rem">Formado em 2007, o Dr. Rafael é especialista e mestre em Implantodontia Oral, com foco em Reabilitação Oral, Estética e Cosmética Odontológica e Harmonização Orofacial. Ao longo de mais de 17 anos de carreira, construiu uma trajetória de excelência no Brasil e na Bolívia.</p>
+      <p class="section-p reveal d3" style="margin-top:1rem">Professor em cursos de pós-graduação na área de implantes, o Dr. Rafael combina rigor técnico e sensibilidade humana: cada paciente recebe atenção individualizada, plano de tratamento transparente e resultados que transformam vidas.</p>
+      <div class="sobre__creds reveal d4">
+        <div class="cred"><div class="cred__lbl">Registro profissional</div><div class="cred__val">CROSP 095345</div></div>
+        <div class="cred"><div class="cred__lbl">Titulação</div><div class="cred__val">Mestre em Implantodontia</div></div>
+        <div class="cred"><div class="cred__lbl">Experiência</div><div class="cred__val">17+ anos de atuação</div></div>
+        <div class="cred"><div class="cred__lbl">Atuação internacional</div><div class="cred__val">Brasil e Bolívia</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMENTOS -->
+<section class="trat" id="tratamentos">
+  <div class="trat__inner">
+    <p class="section-lbl reveal">Especialidades</p>
+    <h2 class="section-h2 reveal d1">Tratamentos que<br><em>devolvem confiança</em></h2>
+    <div class="trat__tabs reveal d2" id="tabsEl">
+      <button class="tab-btn active" data-tab="implanto">Implantodontia</button>
+      <button class="tab-btn" data-tab="exodontias">Exodontias</button>
+      <button class="tab-btn" data-tab="perio">Periodontia</button>
+      <button class="tab-btn" data-tab="estetica">Estética do Sorriso</button>
+      <button class="tab-btn" data-tab="harmoniz">Harmonização Orofacial</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-implanto">
+      <div class="trat__grid">
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Implantes Dentários</h4><p class="trat-card__desc">Substituição permanente de dentes perdidos com titânio biocompatível, devolvendo função e estética completa.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Enxertos Ósseos e Gengivais</h4><p class="trat-card__desc">Reconstrução do volume ósseo e gengival para suporte ideal ao implante, com cicatrização guiada.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Levantamento de Seio Maxilar</h4><p class="trat-card__desc">Técnica que viabiliza implantes mesmo com pouco osso disponível na região posterior da maxila.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Protocolo de Carga Imediata</h4><p class="trat-card__desc">All-on-4 e All-on-6: saia da cirurgia com dentes fixos no mesmo dia, sem espera longa.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Próteses sobre Implante</h4><p class="trat-card__desc">Coroas, pontes e próteses totais fixas sobre implante com estética sofisticada e alta durabilidade.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Overdenture</h4><p class="trat-card__desc">Prótese removível com fixação em implantes, combinando estabilidade, higienização prática e conforto.</p></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-exodontias">
+      <div class="trat__grid">
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Exodontia de Sisos</h4><p class="trat-card__desc">Extração de terceiros molares com técnica minimamente invasiva e pós-operatório tranquilo.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Caninos Retidos</h4><p class="trat-card__desc">Remoção cirúrgica de caninos que não irompem naturalmente, restaurando espaço e função na arcada dentária.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Retiro de Torus Palatino e Lingual</h4><p class="trat-card__desc">Remoção de crescimentos ósseos benignos no palato e língua, restaurando conforto e facilitando higiene oral.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Apicectomia</h4><p class="trat-card__desc">Cirurgia de precisão para tratar infecções na ponta da raiz e preservar o dente natural.</p></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-perio">
+      <div class="trat__grid">
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Limpeza Dentária</h4><p class="trat-card__desc">Remoção de tártaro e biofilme com aparelhos ultrassônicos, prevenindo doenças gengivais.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Raspagem Radicular</h4><p class="trat-card__desc">Tratamento profundo da periodontite, eliminando bactérias das bolsas periodontais.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Cirurgia Periodontal</h4><p class="trat-card__desc">Intervenção cirúrgica para casos avançados de gengivite e periodontite crônica.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Gengivoplastia</h4><p class="trat-card__desc">Remodelação do contorno gengival para harmonizar o sorriso e corrigir excesso de gengiva.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Gengivectomia</h4><p class="trat-card__desc">Remoção do tecido gengival em excesso para exposição correta dos dentes e estética equilibrada.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Enxerto Gengival</h4><p class="trat-card__desc">Um procedimento realizado para corrigir a retração da gengiva, proteger a raiz dos dentes e melhorar a estética do sorriso. Quando a gengiva se retrai, parte da raiz pode ficar exposta, causando sensibilidade e maior risco de desgaste.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">LipStaT®</h4><p class="trat-card__desc">Reposicionamento labial para sorriso gengival. Procedimento cirúrgico minimamente invasivo que repositiona o lábio superior, limitando sua elevação excessiva durante o sorriso, proporcionando uma aparência mais equilibrada e harmoniosa.</p></div>
+    </div>
+
+    <div class="tab-panel" id="tab-estetica">
+      <div class="trat__grid">
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Desenho de Sorriso Digital</h4><p class="trat-card__desc">Planejamento visual do seu novo sorriso antes de qualquer procedimento, com tecnologia 3D.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Lentes de Resina</h4><p class="trat-card__desc">Finas camadas de resina aplicadas sobre os dentes para corrigir forma, cor e alinhamento com reversibilidade.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Lentes de Cerâmica</h4><p class="trat-card__desc">Facetas cerâmicas de alta resistência com aparência extremamente natural e durabilidade superior.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Coroas Dentárias</h4><p class="trat-card__desc">Restauração completa do dente com materiais cerâmicos de última geração e máxima estética.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Clareamento Dental</h4><p class="trat-card__desc">Clareamento a laser e de consultório com produtos seguros e resultados visivelmente mais brancos.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Restaurações</h4><p class="trat-card__desc">Restaurações em resina composta de alta estética, praticamente invisíveis ao olhar.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Próteses Dentárias</h4><p class="trat-card__desc">Próteses fixas, removíveis e sobre implante com máximo conforto e naturalidade no dia a dia.</p></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-harmoniz">
+      <div class="trat__grid">
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Toxina Botulínica</h4><p class="trat-card__desc">Botox facial para suavizar linhas de expressão com resultado natural e elegante, sem cirurgia.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Preenchimento com Ácido Hialurônico</h4><p class="trat-card__desc">Para lábios, olheiras, maçãs do rosto e rugas profundas, com resultado imediato e reversível.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Rinomodelação</h4><p class="trat-card__desc">Harmonização do nariz com ácido hialurônico, sem cirurgia, com resultado visível no mesmo dia.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Bioestimuladores de Colágeno</h4><p class="trat-card__desc">Estimulam a produção natural de colágeno para firmeza e rejuvenescimento progressivo da pele.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Microagulhamento</h4><p class="trat-card__desc">Estimulação da renovação da pele para tratar manchas, poros dilatados e cicatrizes de acne.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Peeling Químico</h4><p class="trat-card__desc">Renovação celular profunda para uniformizar tom, textura e luminosidade da pele do rosto.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Bichectomia</h4><p class="trat-card__desc">Remoção das bolas de Bichat para definição dos contornos faciais e jawline mais marcado.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Lipo de Papada</h4><p class="trat-card__desc">Lipoaspiração minimamente invasiva da região submentoniana para definição precisa do perfil.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Fios de PDO</h4><p class="trat-card__desc">Lifting não cirúrgico com fios de PDO para sustentação e rejuvenescimento visível e imediato.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="galeria" id="galeria">
+  <div class="galeria__inner">
+    <div class="galeria__hd">
+      <p class="section-lbl reveal">Nossa clínica</p>
+      <h2 class="section-h2 reveal d1">Um ambiente pensado<br>para <em>o seu conforto</em></h2>
+    </div>
+    <div class="galeria__grid reveal d2" id="galeriaGrid">
+      <div class="galeria__item" data-index="0"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/Retocada.png" alt="Fachada Odonto Molina"><div class="galeria__item__overlay"><div class="galeria__zoom">+</div></div></div>
+      <div class="galeria__item" data-index="1"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/Recepcao-Odonto-Molina.jpeg" alt="Recepção Odonto Molina"><div class="galeria__item__overlay"><div class="galeria__zoom">+</div></div></div>
+      <div class="galeria__item" data-index="2"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/Sala-de-Descanso-Odonto-Molina.jpeg" alt="Sala de descanso"><div class="galeria__item__overlay"><div class="galeria__zoom">+</div></div></div>
+      <div class="galeria__item" data-index="3"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/Cantinho-do-Cafe-Odonto-Molina.jpeg" alt="Cantinho do café"><div class="galeria__item__overlay"><div class="galeria__zoom">+</div></div></div>
+      <div class="galeria__item" data-index="4"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-02-at-18.13.18.jpeg" alt="Atendimento clínico"><div class="galeria__item__overlay"><div class="galeria__zoom">+</div></div></div>
+      <div class="galeria__item" data-index="5"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-02-at-18.15.52.jpeg" alt="Atendimento clínico"><div class="galeria__item__overlay"><div class="galeria__zoom">+</div></div></div>
+      <div class="galeria__item" data-index="6"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-02-at-18.13.17.jpeg" alt="Atendimento clínico"><div class="galeria__item__overlay"><div class="galeria__zoom">+</div></div></div>
+      <div class="galeria__item" data-index="7"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-02-at-18.11.30.jpeg" alt="Atendimento clínico"><div class="galeria__item__overlay"><div class="galeria__zoom">+</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="lb__close" id="lbClose">&#x2715;</button>
+  <button class="lb__nav lb__prev" id="lbPrev">&#8592;</button>
+  <img class="lb__img" id="lbImg" src="" alt="">
+  <button class="lb__nav lb__next" id="lbNext">&#8594;</button>
+  <div class="lb__caption" id="lbCaption"></div>
+</div>
+
+<!-- DEPOIMENTOS -->
+<section class="depo" id="depoimentos">
+  <div class="depo__inner">
+    <div class="depo__hd">
+      <p class="section-lbl reveal">O que dizem nossos pacientes</p>
+      <h2 class="section-h2 reveal d1">Vidas transformadas<br><em>por sorrisos</em></h2>
+    </div>
+    <div class="depo__carousel" id="carousel">
+      <div class="depo__item active">
+        <div class="depo__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="depo__quote">Fiz meu implante com o Dr. Rafael e a experiência foi incrível. Nenhuma dor, total atenção e um resultado que superou todas as minhas expectativas. Me sinto outra pessoa com esse sorriso.</p>
+        <div class="depo__author">Mariana S.</div>
+        <div class="depo__role">Implante dentário</div>
+      </div>
+      <div class="depo__item">
+        <div class="depo__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="depo__quote">Fiz as lentes de porcelana e estou apaixonada. O Dr. Rafael é um artista: cada detalhe do meu sorriso foi pensado com cuidado. A clínica é linda, o ambiente é super acolhedor e a equipe é nota 10.</p>
+        <div class="depo__author">Fernanda L.</div>
+        <div class="depo__role">Lentes de porcelana</div>
+      </div>
+      <div class="depo__item">
+        <div class="depo__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="depo__quote">Tinha muito medo de dentista, mas na Odonto Molina me senti completamente seguro. O Dr. Rafael explicou cada etapa com calma e paciência. Hoje finalmente tenho o sorriso que sempre quis.</p>
+        <div class="depo__author">Carlos M.</div>
+        <div class="depo__role">Protocolo de carga imediata</div>
+      </div>
+      <div class="depo__item">
+        <div class="depo__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="depo__quote">Fiz harmonização orofacial com o Dr. Rafael e o resultado ficou muito natural, exatamente o que eu queria. Ele tem um olhar clínico apurado e não exagera. Recomendo sem hesitar.</p>
+        <div class="depo__author">Juliana R.</div>
+        <div class="depo__role">Harmonização orofacial</div>
+      </div>
+      <div class="depo__item">
+        <div class="depo__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="depo__quote">Tratei periodontite grave há dois anos e meus dentes estão impecáveis até hoje. Tratamento rigoroso, acompanhamento constante e uma equipe que realmente se importa com o seu bem-estar.</p>
+        <div class="depo__author">Roberto A.</div>
+        <div class="depo__role">Tratamento periodontal</div>
+      </div>
+    </div>
+    <div class="depo__controls">
+      <button class="depo__btn" id="depoPrev">&#8592;</button>
+      <div class="depo__dots" id="depoDots"></div>
+      <button class="depo__btn" id="depoNext">&#8594;</button>
+    </div>
+    <div class="google-badge reveal">
+      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      <span class="google-badge__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span class="google-badge__score">5.0</span>
+      <span style="color:var(--text-mid)">no Google</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq__inner">
+    <div class="faq__hd">
+      <p class="section-lbl reveal">Perguntas frequentes</p>
+      <h2 class="section-h2 reveal d1">Tire suas dúvidas<br><em>antes de vir</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-item__q">Qual a diferença entre lentes de resina e de porcelana?<span class="faq-item__ico">+</span></button>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">As lentes de resina são aplicadas diretamente sobre o dente pelo dentista, têm custo menor e podem ser refeitas com facilidade. As de porcelana são confeccionadas em laboratório, têm maior resistência, durabilidade de 15 a 20 anos e aparência ainda mais natural. A melhor indicação depende da sua condição dental e dos objetivos estéticos.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q">Posso clarear os dentes mesmo tendo lentes?<span class="faq-item__ico">+</span></button>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">Não. As lentes de resina e de porcelana não respondem ao clareamento. O ideal é realizar o clareamento antes de colocar as lentes, para que a cor das facetas seja planejada conforme o tom desejado. Se você já tem lentes, o clareamento pode ser feito nos dentes ao redor para uniformizar o sorriso.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q">Quanto tempo leva o tratamento com implantes?<span class="faq-item__ico">+</span></button>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">O tempo varia de 3 a 6 meses, dependendo da necessidade de enxerto ósseo e do protocolo adotado. Nos casos de carga imediata (All-on-4 ou All-on-6), você sai com dentes provisórios no mesmo dia da cirurgia. O Dr. Rafael fará uma avaliação completa para indicar o melhor caminho para o seu caso.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q">Quais tipos de próteses e coroas existem?<span class="faq-item__ico">+</span></button>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">As principais são: coroas de porcelana pura (máxima estética, para dentes anteriores), coroas de zircônia (altíssima resistência, indicadas para molares), próteses fixas sobre implante (substitui um ou vários dentes sem remover), próteses parciais removíveis (para quem perdeu vários dentes) e overdenture (prótese total fixada em implantes). Cada opção tem indicações, custos e benefícios específicos.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q">Quais são as opções de pagamento?<span class="faq-item__ico">+</span></button>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">Trabalhamos com diversas formas de pagamento: cartões de crédito e débito, Pix, parcelamento em até 18 vezes no cartão e financiamento via convênio com financeiras odontológicas. Após a avaliação, apresentamos o plano financeiro detalhado para que você escolha a melhor opção.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q">Como é a recuperação após extração de sisos?<span class="faq-item__ico">+</span></button>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">Nos primeiros 2 a 3 dias pode haver inchaço, dor moderada e sangramento leve. Prescrevemos analgésico, anti-inflamatório e, se necessário, antibiótico. A maioria dos pacientes retorna às atividades normais em 48 horas. Evite esforço físico, alimentos duros e fumo na primeira semana para garantir uma cicatrização tranquila.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q">A aplicação de toxina botulínica dói?<span class="faq-item__ico">+</span></button>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">A aplicação é feita com agulhas ultrafinas e causa apenas um leve desconforto, semelhante a uma picada de agulha. A maioria dos pacientes descreve como bem tolerável. Aplicamos anestésico tópico antes do procedimento nos casos mais sensíveis para garantir máximo conforto.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q">Quanto tempo duram o botox e o preenchimento labial?<span class="faq-item__ico">+</span></button>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">A toxina botulínica dura em média de 4 a 6 meses, com variação conforme o metabolismo de cada paciente. O preenchimento labial com ácido hialurônico tem durabilidade de 8 a 12 meses. Com reaplicações regulares, o intervalo entre sessões tende a aumentar.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <div class="contato__inner">
+    <div>
+      <p class="section-lbl reveal">Fale conosco</p>
+      <h2 class="section-h2 reveal d1">Agende sua<br><em style="color:var(--gold)">avaliação</em></h2>
+      <div class="contato__info reveal d2">
+        <div class="contato__row">
+          <div class="contato__ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="contato__txt"><strong>WhatsApp</strong><a href="https://wa.me/5515998841111?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Odonto%20Molina." target="_blank">(15) 99884-1111</a></div>
+        </div>
+        <div class="contato__row">
+          <div class="contato__ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <div class="contato__txt"><strong>Telefone fixo</strong>(15) 3243-1000</div>
+        </div>
+        <div class="contato__row">
+          <div class="contato__ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div class="contato__txt"><strong>Horário de atendimento</strong>Segunda a Sexta: 9h às 19h<br>Sábado: 9h às 13h</div>
+        </div>
+        <div class="contato__row">
+          <div class="contato__ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div class="contato__txt"><strong>Endereço</strong>Bairro Parque Bela Vista<br>Votorantim</div>
+        </div>
+      </div>
+      <div class="contato__cta-wrap reveal d3">
+        <a href="https://wa.me/5515998841111?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Odonto%20Molina." class="btn-gold" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="contato__map reveal d2">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.3!2d-47.4789!3d-23.5012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c58b5b0a9a5555%3A0x1234567890abcdef!2sAv.+Gisele+Constantino%2C+1451+-+Parque+Campolim%2C+Sorocaba+-+SP!5e0!3m2!1spt-BR!2sbr!4v1699999999999!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização Odonto Molina"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer__inner">
+    <a href="#" class="footer__logo"><img src="https://www.odontomolina.com.br/wp-content/uploads/2024/09/Logo-Odonto-Molina.png" alt="Odonto Molina"></a>
+    <div class="footer__social">
+      <a href="https://instagram.com/odontomolina" class="footer__soc" target="_blank" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://facebook.com/odontomolina" class="footer__soc" target="_blank" aria-label="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@odontomolina" class="footer__soc" target="_blank" aria-label="TikTok">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+      <a href="https://g.page/odontomolina" class="footer__soc" target="_blank" aria-label="Google">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 110-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.969 9.969 0 0012.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z"/></svg>
+      </a>
+    </div>
+    <p class="footer__copy">&copy; 2026 Odonto Molina. CROSP 095345 &middot; Votorantim/SP</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wa-float">
+  <div class="wa-float__tip">Fale conosco</div>
+  <a class="wa-float__btn" href="https://wa.me/5515998841111?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Odonto%20Molina." target="_blank" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// Navbar scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 60);
+}, { passive: true });
+
+// Parallax hero
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll', () => {
+  heroBg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+}, { passive: true });
+
+// Mobile menu
+const burgerBtn = document.getElementById('burgerBtn');
+const mobMenu = document.getElementById('mobMenu');
+const mobClose = document.getElementById('mobClose');
+burgerBtn.addEventListener('click', () => mobMenu.classList.add('open'));
+mobClose.addEventListener('click', () => mobMenu.classList.remove('open'));
+function closeMob() { mobMenu.classList.remove('open'); }
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(r => revealObs.observe(r));
+
+// Counter animation
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const dur = 1600;
+  const start = performance.now();
+  const step = (now) => {
+    const p = Math.min((now - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(eased * target).toLocaleString('pt-BR');
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(c => counterObs.observe(c));
+
+// Tabs
+document.getElementById('tabsEl').addEventListener('click', e => {
+  const btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+});
+
+// 3D tilt on treatment cards
+document.querySelectorAll('.trat-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateZ(6px)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+// Gallery lightbox
+const lbImages = [
+  { src: 'https://www.odontomolina.com.br/wp-content/uploads/2024/09/Retocada.png', cap: 'Fachada da clínica' },
+  { src: 'https://www.odontomolina.com.br/wp-content/uploads/2024/09/Recepcao-Odonto-Molina.jpeg', cap: 'Recepção' },
+  { src: 'https://www.odontomolina.com.br/wp-content/uploads/2024/09/Sala-de-Descanso-Odonto-Molina.jpeg', cap: 'Sala de descanso' },
+  { src: 'https://www.odontomolina.com.br/wp-content/uploads/2024/09/Cantinho-do-Cafe-Odonto-Molina.jpeg', cap: 'Cantinho do café' },
+  { src: 'https://www.odontomolina.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-02-at-18.13.18.jpeg', cap: 'Atendimento' },
+  { src: 'https://www.odontomolina.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-02-at-18.15.52.jpeg', cap: 'Atendimento' },
+  { src: 'https://www.odontomolina.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-02-at-18.13.17.jpeg', cap: 'Atendimento' },
+  { src: 'https://www.odontomolina.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-02-at-18.11.30.jpeg', cap: 'Atendimento' }
+];
+let lbIdx = 0;
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+const lbCaption = document.getElementById('lbCaption');
+function lbShow(i) {
+  lbIdx = (i + lbImages.length) % lbImages.length;
+  lbImg.src = lbImages[lbIdx].src;
+  lbImg.alt = lbImages[lbIdx].cap;
+  lbCaption.textContent = lbImages[lbIdx].cap;
+}
+document.getElementById('galeriaGrid').addEventListener('click', e => {
+  const item = e.target.closest('.galeria__item');
+  if (!item) return;
+  lbShow(parseInt(item.dataset.index));
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+document.getElementById('lbClose').addEventListener('click', () => { lb.classList.remove('open'); document.body.style.overflow = ''; });
+document.getElementById('lbPrev').addEventListener('click', () => lbShow(lbIdx - 1));
+document.getElementById('lbNext').addEventListener('click', () => lbShow(lbIdx + 1));
+lb.addEventListener('click', e => { if (e.target === lb) { lb.classList.remove('open'); document.body.style.overflow = ''; } });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  if (e.key === 'ArrowLeft') lbShow(lbIdx - 1);
+  if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+});
+
+// Testimonial carousel
+const depoItems = document.querySelectorAll('.depo__item');
+const dotsContainer = document.getElementById('depoDots');
+let depoIdx = 0;
+let depoTimer;
+depoItems.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'depo__dot' + (i === 0 ? ' active' : '');
+  d.addEventListener('click', () => { goDepo(i); resetDepoTimer(); });
+  dotsContainer.appendChild(d);
+});
+function goDepo(n) {
+  depoItems[depoIdx].classList.remove('active');
+  dotsContainer.children[depoIdx].classList.remove('active');
+  depoIdx = (n + depoItems.length) % depoItems.length;
+  depoItems[depoIdx].classList.add('active');
+  dotsContainer.children[depoIdx].classList.add('active');
+}
+function resetDepoTimer() { clearInterval(depoTimer); depoTimer = setInterval(() => goDepo(depoIdx + 1), 5000); }
+document.getElementById('depoPrev').addEventListener('click', () => { goDepo(depoIdx - 1); resetDepoTimer(); });
+document.getElementById('depoNext').addEventListener('click', () => { goDepo(depoIdx + 1); resetDepoTimer(); });
+resetDepoTimer();
+
+// FAQ accordion
+document.querySelectorAll('.faq-item__q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Formulário Modal
+const formModal = document.getElementById('formModal');
+const formClose = document.getElementById('formClose');
+const formSubmit = document.getElementById('formSubmit');
+const formInputs = {
+  nome: document.getElementById('formNome'),
+  especialidade: document.getElementById('formEspecialidade'),
+  queixa: document.getElementById('formQueixa'),
+  tempo: document.getElementById('formTempo'),
+  tratamento: document.getElementById('formTratamento')
+};
+
+// Abrir modal em todos os botões
+document.querySelectorAll('.btn-gold, .btn-outline, .contato__cta-wrap a, .nav__cta').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    if (btn.href && btn.href.includes('wa.me')) {
+      e.preventDefault();
+      formModal.classList.add('open');
+    }
+  });
+});
+
+// Fechar modal
+formClose.addEventListener('click', () => formModal.classList.remove('open'));
+formModal.addEventListener('click', (e) => {
+  if (e.target === formModal) formModal.classList.remove('open');
+});
+
+// Enviar formulário
+formSubmit.addEventListener('click', () => {
+  const nome = formInputs.nome.value.trim();
+  const especialidade = formInputs.especialidade.value;
+  const queixa = formInputs.queixa.value;
+  const tempo = formInputs.tempo.value;
+  const tratamento = formInputs.tratamento.value;
+
+  if (!nome || !especialidade || !queixa || !tempo || !tratamento) {
+    alert('Por favor, preencha todos os campos!');
+    return;
+  }
+
+  const mensagem = `FICHA DE ANAMNESE - ODONTO MOLINA%0A%0APaciente: ${nome}%0AEspecialidade: ${especialidade}%0AQueixa Principal: ${queixa}%0ATempo do Problema: ${tempo}%0ATratamentos Anteriores: ${tratamento}%0A%0A----%0AClique aqui para confirmar agendamento!`;
+  
+  const whatsappUrl = `https://wa.me/5515998841111?text=${mensagem}`;
+  window.open(whatsappUrl, '_blank');
+  
+  formModal.classList.remove('open');
+  formInputs.nome.value = '';
+  formInputs.especialidade.value = '';
+  formInputs.queixa.value = '';
+  formInputs.tempo.value = '';
+  formInputs.tratamento.value = '';
+});
+
+</script>
+</body>
+</html>
