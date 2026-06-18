@@ -131,6 +131,17 @@ body{font-family:var(--font-body);color:var(--text-dark);background:var(--off-wh
 .trat-card__name{font-family:var(--font-display);font-size:1.2rem;font-weight:400;color:var(--off-white);margin-bottom:.5rem}
 .trat-card__desc{font-size:.875rem;line-height:1.62;color:oklch(72% 0.01 80)}
 
+/* ── HARMONIZAÇÃO COMPLEMENTAR ── */
+.harmoniz-plus{margin-top:3.5rem}
+.harmoniz-plus__title{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:400;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:.6rem}
+.harmoniz-plus__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.harmoniz-plus__card{padding:2rem;background:oklch(100% 0 0 / .04);border:1px solid oklch(100% 0 0 / .1);transition:background .25s,border-color .25s}
+.harmoniz-plus__card:hover{background:oklch(100% 0 0 / .08);border-color:oklch(68% 0.095 78 / .45)}
+.harmoniz-plus__name{font-family:var(--font-display);font-size:1.2rem;font-weight:400;color:var(--off-white);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.harmoniz-plus__list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.harmoniz-plus__list li{font-size:.875rem;line-height:1.5;color:oklch(72% 0.01 80);padding-left:1.1rem;position:relative}
+.harmoniz-plus__list li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;background:var(--gold);border-radius:50%}
+
 /* ── GALERIA ── */
 .galeria{background:var(--off-white);padding:clamp(4rem,8vw,7rem) 2rem}
 .galeria__inner{max-width:1200px;margin:0 auto}
@@ -291,7 +302,7 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
       <select id="formEspecialidade">
         <option value="">Selecione uma opção</option>
         <option value="Implantodontia">Implantodontia</option>
-        <option value="Exodontias">Exodontias</option>
+        <option value="Cirurgia Bucal">Cirurgia Bucal</option>
         <option value="Periodontia">Periodontia</option>
         <option value="Estética do Sorriso">Estética do Sorriso</option>
         <option value="Harmonização Orofacial">Harmonização Orofacial</option>
@@ -370,7 +381,7 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
   <div class="hero__bg" id="heroBg"></div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
-    <div class="hero__eyebrow">Clínica Odontológica em Sorocaba</div>
+    <div class="hero__eyebrow">Clínica Odontológica em Sorocaba/Votorantim</div>
     <h1 class="hero__h1">Sorrisos que<br><span>transformam vidas</span></h1>
     <p class="hero__slogan">"Ter um lindo sorriso aumenta a sua autoestima"</p>
     <div class="hero__ctas">
@@ -391,11 +402,10 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
 <!-- STATS -->
 <div class="stats">
   <div class="stats__inner">
-    <div class="reveal"><div class="stats__num"><span class="counter" data-target="17">0</span>+</div><div class="stats__lbl">Anos de experiência</div></div>
+    <div class="reveal"><div class="stats__num"><span class="counter" data-target="18">0</span>+</div><div class="stats__lbl">Anos de experiência</div></div>
     <div class="reveal d1"><div class="stats__num"><span class="counter" data-target="5000">0</span>+</div><div class="stats__lbl">Pacientes atendidos</div></div>
-    <div class="reveal d2"><div class="stats__num"><span class="counter" data-target="2">0</span></div><div class="stats__lbl">Clínicas no Brasil</div></div>
-    <div class="reveal d3"><div class="stats__num"><span class="counter" data-target="2">0</span></div><div class="stats__lbl">Especialidades</div></div>
-    <div class="reveal d4"><div class="stats__num"><span class="counter" data-target="1">0</span></div><div class="stats__lbl">Mestrado</div></div>
+    <div class="reveal d2"><div class="stats__num"><span class="counter" data-target="2">0</span></div><div class="stats__lbl">Especialidades</div></div>
+    <div class="reveal d3"><div class="stats__num"><span class="counter" data-target="1">0</span></div><div class="stats__lbl">Mestrado</div></div>
   </div>
 </div>
 
@@ -445,12 +455,12 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
     <div>
       <p class="section-lbl reveal">Conheça o especialista</p>
       <h2 class="section-h2 reveal d1">Dr. Rafael<br>Molina Vargas</h2>
-      <p class="section-p reveal d2" style="margin-top:1.5rem">Formado em 2007, o Dr. Rafael é especialista e mestre em Implantodontia Oral, com foco em Reabilitação Oral, Estética e Cosmética Odontológica e Harmonização Orofacial. Ao longo de mais de 17 anos de carreira, construiu uma trajetória de excelência no Brasil e na Bolívia.</p>
+      <p class="section-p reveal d2" style="margin-top:1.5rem">Formado em março/2008, o Dr. Rafael é especialista e mestre em Implantodontia Oral, com foco em Reabilitação Oral e Harmonização Orofacial. Ao longo de mais de 17 anos de carreira, construiu uma trajetória de excelência no Brasil e na Bolívia.</p>
       <p class="section-p reveal d3" style="margin-top:1rem">Professor em cursos de pós-graduação na área de implantes, o Dr. Rafael combina rigor técnico e sensibilidade humana: cada paciente recebe atenção individualizada, plano de tratamento transparente e resultados que transformam vidas.</p>
       <div class="sobre__creds reveal d4">
         <div class="cred"><div class="cred__lbl">Registro profissional</div><div class="cred__val">CROSP 095345</div></div>
         <div class="cred"><div class="cred__lbl">Titulação</div><div class="cred__val">Mestre em Implantodontia</div></div>
-        <div class="cred"><div class="cred__lbl">Experiência</div><div class="cred__val">17+ anos de atuação</div></div>
+        <div class="cred"><div class="cred__lbl">Experiência</div><div class="cred__val">18 anos de atuação</div></div>
         <div class="cred"><div class="cred__lbl">Atuação internacional</div><div class="cred__val">Brasil e Bolívia</div></div>
       </div>
     </div>
@@ -464,10 +474,10 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
     <h2 class="section-h2 reveal d1">Tratamentos que<br><em>devolvem confiança</em></h2>
     <div class="trat__tabs reveal d2" id="tabsEl">
       <button class="tab-btn active" data-tab="implanto">Implantodontia</button>
-      <button class="tab-btn" data-tab="exodontias">Exodontias</button>
+      <button class="tab-btn" data-tab="exodontias">Cirurgia Bucal</button>
       <button class="tab-btn" data-tab="perio">Periodontia</button>
       <button class="tab-btn" data-tab="estetica">Estética do Sorriso</button>
-      <button class="tab-btn" data-tab="harmoniz">Harmonização Orofacial</button>
+      <button class="tab-btn" data-tab="harmoniz">Harmonização Orofacial Complementar</button>
     </div>
 
     <div class="tab-panel active" id="tab-implanto">
@@ -498,7 +508,7 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
         <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Gengivoplastia</h4><p class="trat-card__desc">Remodelação do contorno gengival para harmonizar o sorriso e corrigir excesso de gengiva.</p></div>
         <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Gengivectomia</h4><p class="trat-card__desc">Remoção do tecido gengival em excesso para exposição correta dos dentes e estética equilibrada.</p></div>
         <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Enxerto Gengival</h4><p class="trat-card__desc">Um procedimento realizado para corrigir a retração da gengiva, proteger a raiz dos dentes e melhorar a estética do sorriso. Quando a gengiva se retrai, parte da raiz pode ficar exposta, causando sensibilidade e maior risco de desgaste.</p></div>
-        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">LipStaT®</h4><p class="trat-card__desc">Reposicionamento labial para sorriso gengival. Procedimento cirúrgico minimamente invasivo que repositiona o lábio superior, limitando sua elevação excessiva durante o sorriso, proporcionando uma aparência mais equilibrada e harmoniosa.</p></div>
+        <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Reposicionamento Labial</h4><p class="trat-card__desc">Reposicionamento labial para sorriso gengival. Procedimento cirúrgico minimamente invasivo que repositiona o lábio superior, limitando sua elevação excessiva durante o sorriso, proporcionando uma aparência mais equilibrada e harmoniosa.</p></div>
     </div>
 
     <div class="tab-panel" id="tab-estetica">
@@ -510,6 +520,83 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
         <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Clareamento Dental</h4><p class="trat-card__desc">Clareamento a laser e de consultório com produtos seguros e resultados visivelmente mais brancos.</p></div>
         <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Restaurações</h4><p class="trat-card__desc">Restaurações em resina composta de alta estética, praticamente invisíveis ao olhar.</p></div>
         <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Próteses Dentárias</h4><p class="trat-card__desc">Próteses fixas, removíveis e sobre implante com máximo conforto e naturalidade no dia a dia.</p></div>
+      </div>
+
+      <div class="harmoniz-plus reveal">
+        <h3 class="harmoniz-plus__title">✨ Estética do Sorriso</h3>
+        <div class="harmoniz-plus__grid">
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Clareamento Dental</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Clareamento em consultório</li>
+              <li>Clareamento caseiro supervisionado</li>
+              <li>Clareamento combinado</li>
+              <li>Remoção de manchas e escurecimentos</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Lentes em Porcelana</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Transformação completa do sorriso</li>
+              <li>Correção de cor, forma e tamanho dos dentes</li>
+              <li>Alta resistência e durabilidade</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Lentes em Resina Composta</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Alternativa mais conservadora</li>
+              <li>Correções estéticas imediatas</li>
+              <li>Sem desgaste dental</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Fechamento de Diastemas</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Espaços entre os dentes</li>
+              <li>Realizado com resina ou porcelana</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Recontorno Estético Dental</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Ajuste do formato dos dentes</li>
+              <li>Correção de pequenas irregularidades</li>
+              <li>Harmonização das proporções dentárias</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Restaurações Estéticas</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Troca de restaurações antigas escurecidas</li>
+              <li>Reconstrução de dentes fraturados</li>
+              <li>Uso de materiais com aspecto natural</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Harmonização do Sorriso sobre Implantes</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Coroas estéticas sobre implantes</li>
+              <li>Reabilitação de dentes ausentes</li>
+              <li>Integração entre função e estética</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Alinhamento Ortodôntico Estético</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Alinhadores transparentes</li>
+              <li>Correção de dentes tortos sem comprometer a estética durante o tratamento</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Reabilitação Oral Estética</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Planejamento completo do sorriso</li>
+              <li>Combinação de implantes, próteses, facetas e clareamento</li>
+              <li>Recuperação da estética e função mastigatória</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -524,6 +611,91 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
         <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Bichectomia</h4><p class="trat-card__desc">Remoção das bolas de Bichat para definição dos contornos faciais e jawline mais marcado.</p></div>
         <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Lipo de Papada</h4><p class="trat-card__desc">Lipoaspiração minimamente invasiva da região submentoniana para definição precisa do perfil.</p></div>
         <div class="trat-card"><div class="trat-card__dot"></div><h4 class="trat-card__name">Fios de PDO</h4><p class="trat-card__desc">Lifting não cirúrgico com fios de PDO para sustentação e rejuvenescimento visível e imediato.</p></div>
+      </div>
+
+      <div class="harmoniz-plus reveal">
+        <h3 class="harmoniz-plus__title">✨ Harmonização Orofacial</h3>
+        <div class="harmoniz-plus__grid">
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">💉 Toxina Botulínica (Botox)</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Suavização de rugas e linhas de expressão</li>
+              <li>Prevenção do envelhecimento facial</li>
+              <li>Correção do sorriso gengival</li>
+              <li>Tratamento do bruxismo</li>
+              <li>Alívio de dores musculares faciais</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">💋 Preenchimento com Ácido Hialurônico</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Aumento e definição dos lábios</li>
+              <li>Contorno mandibular</li>
+              <li>Projeção do queixo</li>
+              <li>Preenchimento de sulcos e rugas</li>
+              <li>Reposição de volume facial</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Bioestimuladores de Colágeno</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Estímulo da produção natural de colágeno</li>
+              <li>Melhora da firmeza da pele</li>
+              <li>Redução da flacidez facial</li>
+              <li>Rejuvenescimento progressivo</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Skinbooster</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Hidratação profunda da pele</li>
+              <li>Melhora da textura e luminosidade</li>
+              <li>Redução de linhas finas</li>
+              <li>Rejuvenescimento natural</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Microagulhamento</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Estímulo à produção de colágeno</li>
+              <li>Tratamento de cicatrizes de acne</li>
+              <li>Melhora de poros dilatados</li>
+              <li>Uniformização da pele</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Lipoenzimática de Papada</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Redução da gordura localizada abaixo do queixo</li>
+              <li>Definição do contorno facial</li>
+              <li>Melhora do perfil facial</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Preenchimento de Olheiras</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Redução do aspecto cansado</li>
+              <li>Reposição de volume na região dos olhos</li>
+              <li>Aparência mais jovem e descansada</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Rinomodelação Não Cirúrgica</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Correção de pequenas imperfeições do nariz</li>
+              <li>Melhora do perfil facial</li>
+              <li>Resultados imediatos sem cirurgia</li>
+            </ul>
+          </div>
+          <div class="harmoniz-plus__card">
+            <h4 class="harmoniz-plus__name">✨ Harmonização Facial Completa</h4>
+            <ul class="harmoniz-plus__list">
+              <li>Avaliação individualizada</li>
+              <li>Planejamento personalizado</li>
+              <li>Combinação de procedimentos para resultados naturais</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -637,11 +809,11 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
       </div>
       <div class="faq-item">
         <button class="faq-item__q">Quais são as opções de pagamento?<span class="faq-item__ico">+</span></button>
-        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">Trabalhamos com diversas formas de pagamento: cartões de crédito e débito, Pix, parcelamento em até 18 vezes no cartão e financiamento via convênio com financeiras odontológicas. Após a avaliação, apresentamos o plano financeiro detalhado para que você escolha a melhor opção.</p></div></div>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">Trabalhamos com diversas formas de pagamento: cartões de crédito e débito, Pix, parcelamento em até 24 vezes no cartão e financiamento via convênio com financeiras odontológicas. Após a avaliação, apresentamos o plano financeiro detalhado para que você escolha a melhor opção.</p></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-item__q">Como é a recuperação após extração de sisos?<span class="faq-item__ico">+</span></button>
-        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">Nos primeiros 2 a 3 dias pode haver inchaço, dor moderada e sangramento leve. Prescrevemos analgésico, anti-inflamatório e, se necessário, antibiótico. A maioria dos pacientes retorna às atividades normais em 48 horas. Evite esforço físico, alimentos duros e fumo na primeira semana para garantir uma cicatrização tranquila.</p></div></div>
+        <div class="faq-item__body"><div class="faq-item__body-inner"><p class="faq-item__a">A extração dos sisos é um procedimento seguro e rotineiro em nossa clínica. Embora possa ocorrer leve inchaço, sensibilidade e pequeno sangramento nos primeiros dias, a recuperação costuma ser muito tranquila. Graças à experiência do Dr. Molina, que realiza a cirurgia de forma rápida (cerca de 30 minutos), e ao protocolo medicamentoso adequado, a maioria dos pacientes apresenta pouco ou nenhum desconforto e retorna às atividades normais já no dia seguinte.</p></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-item__q">A aplicação de toxina botulínica dói?<span class="faq-item__ico">+</span></button>
@@ -684,7 +856,7 @@ footer{background:oklch(16% 0.028 52);padding:2.5rem 2rem}
           <div class="contato__ico">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
-          <div class="contato__txt"><strong>Endereço</strong>Bairro Parque Bela Vista<br>Votorantim</div>
+          <div class="contato__txt"><strong>Endereço</strong>Av. Gisele Constantino, 1451<br>Sala 24 - Dubai Business<br>CEP 18110-650<br>Parque Bela Vista - Votorantim</div>
         </div>
       </div>
       <div class="contato__cta-wrap reveal d3">
